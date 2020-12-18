@@ -1,0 +1,21 @@
+#spring:
+#  datasource:
+#    username: root
+#    password: 123456
+#    url: jdbc:mysql://10.0.0.128:3306/gulimall_sms
+#    driver-class-name: com.mysql.jdbc.Driver
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 127.0.0.1:8848 #配置注册中心的地址
+#  application:
+#    name: gulimall-coupon #配置在注册中心里面的名称
+#mybatis-plus:
+#  mapper-locations: classpath*:/mapper/**/*.xml # 这里添加扫描.xml的配置文件
+#  global-config:
+#    db-config:
+#      id-type: auto # 这里配置主键规则
+#
+#server:
+#  port: 7000
+#
