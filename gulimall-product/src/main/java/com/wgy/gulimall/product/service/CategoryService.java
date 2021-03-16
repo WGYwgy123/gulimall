@@ -27,5 +27,23 @@ public interface CategoryService extends IService<CategoryEntity> {
      */
     List<CategoryEntity> listWithTree();
 
+    /**
+     *
+     * @description 批量删除目录
+     * @author 吴高耀
+     * @email 709581924@qq.com
+     * @date 2020/12/21 15:55
+     * @param asList
+     */
+    void removeMenuByIds(List<Long> asList);
+
+    /**
+     * 找到catelogId的完整路径
+     * @param catelogId 目录ID
+     * @return 完整路径
+     */
+    Long[] findCatelogPath(Long catelogId);
+
+    Boolean updateCascade(CategoryEntity category);
 }
 

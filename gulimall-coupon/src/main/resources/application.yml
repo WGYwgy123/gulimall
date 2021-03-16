@@ -2,7 +2,7 @@
 #  datasource:
 #    username: root
 #    password: 123456
-#    url: jdbc:mysql://10.0.0.128:3306/gulimall_sms
+#    url: jdbc:mysql://10.0.0.100:3306/gulimall_sms
 #    driver-class-name: com.mysql.jdbc.Driver
 #  cloud:
 #    nacos:

@@ -2,20 +2,27 @@ spring:
   datasource:
     username: root
     password: 123456
-    url: jdbc:mysql://10.0.0.128:3306/gulimall_pms
+    url: jdbc:mysql://10.0.0.100:3306/gulimall_pms
     driver-class-name: com.mysql.jdbc.Driver
+  #下面这个是注册中心地址
   cloud:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
-  application:
-    name: gulimall-product
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
 
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*.xml # 这里添加扫描.xml的配置文件
   global-config:
     db-config:
       id-type: auto # 这里配置主键规则
+      logic-delete-value: 1
+      logic-not-delete-value: 0
 
 server:
-  port: 10000
+  port: 10001
+
+logging:
+  level:
+    com.wgy.gulimall: debug

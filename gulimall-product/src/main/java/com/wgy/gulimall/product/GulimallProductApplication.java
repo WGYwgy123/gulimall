@@ -4,6 +4,8 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.cloud.openfeign.FeignClient;
 
 /**
  * 1. 整合MyBatis-Plus
@@ -14,6 +16,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  *              1. 使用@MapperScan 扫描mapper接口
  *              2. 告诉其配置.xml文件的位置
  */
+@EnableFeignClients(basePackages = "com.wgy.gulimall.product.feign")
 @MapperScan("com.wgy.gulimall.product.dao")
 @EnableDiscoveryClient
 @SpringBootApplication
