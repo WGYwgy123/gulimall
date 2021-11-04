@@ -44,7 +44,10 @@ public class ProductAttrValueServiceImpl extends ServiceImpl<ProductAttrValueDao
     public void updateSpuAttr(Long spuId, List<ProductAttrValueEntity> entities) {
         // 删除属性
         remove(Wrappers.<ProductAttrValueEntity>lambdaQuery().eq(ProductAttrValueEntity::getSpuId, spuId));
-        final List<ProductAttrValueEntity> collect = entities.stream().peek(entity -> entity.setSpuId(spuId)).collect(Collectors.toList());
+        final List<ProductAttrValueEntity> collect = entities
+                .stream()
+                .peek(entity -> entity.setSpuId(spuId))
+                .collect(Collectors.toList());
         saveBatch(collect);
     }
 

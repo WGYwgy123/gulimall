@@ -4,7 +4,10 @@ spring:
       routes:
 #        - id: test_route
 #          uri: https://www.baidu.com
-#          predicates:
+#          predicates:  （谓语、断言）：路由转发的判断条件，
+#                         目前SpringCloud Gateway支持多种方式，
+#                         常见如：Path、Query、Method、Header等
+#                         当满足这种条件后才会被转发
 #            - Query=url,baidu
 #
 #        - id: qq_route
@@ -16,7 +19,7 @@ spring:
           uri: lb://gulimall-product
           predicates:
             - Path=/api/product/**
-          filters:
+          filters:  #过滤器是路由转发请求时所经过的过滤逻辑，可用于修改请求、响应内容
             - RewritePath=/api/(?<segment>.*),/$\{segment}
 
         - id: third_party_route

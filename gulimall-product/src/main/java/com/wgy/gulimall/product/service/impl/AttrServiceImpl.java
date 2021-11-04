@@ -117,7 +117,8 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
 
         // 设置分组信息
         if (attrEntity.getAttrType() == ProductConstant.AttrEum.ATTR_TYPE_BASE.getCode()) {
-            final AttrAttrgroupRelationEntity attrAttrgroupRelationEntity = attrAttrgroupRelationService.getOne(Wrappers.<AttrAttrgroupRelationEntity>lambdaQuery()
+            final AttrAttrgroupRelationEntity attrAttrgroupRelationEntity =
+                    attrAttrgroupRelationService.getOne(Wrappers.<AttrAttrgroupRelationEntity>lambdaQuery()
                     .eq(AttrAttrgroupRelationEntity::getAttrId, attrEntity.getAttrId()));
             if (ObjectUtils.isNotEmpty(attrAttrgroupRelationEntity)) {
                 attrRespVo.setAttrGroupId(attrAttrgroupRelationEntity.getAttrGroupId());

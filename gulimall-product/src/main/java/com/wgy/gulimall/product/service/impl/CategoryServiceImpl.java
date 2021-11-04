@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -48,7 +49,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
                     menu.setChildren(getChildren(menu, categoryEntityList));
                     return menu;
                 })
-                .sorted((menu1, menu2) -> (menu1.getSort() == null ? 0 : menu1.getSort()) - (menu2.getSort() == null ? 0 : menu2.getSort()))
+                .sorted(Comparator.comparingInt(menu -> (menu.getSort() == null ? 0 : menu.getSort())))
                 .collect(Collectors.toList());
         return entityList;
     }
@@ -95,7 +96,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
                     menu.setChildren(getChildren(menu, all));
                     return menu;
                 })
-                .sorted((menu1, menu2) -> (menu1.getSort() == null ? 0 : menu1.getSort()) - (menu2.getSort() == null ? 0 : menu2.getSort()))
+                .sorted(Comparator.comparingInt(menu -> (menu.getSort() == null ? 0 : menu.getSort())))
                 .collect(Collectors.toList());
         return childrenList;
     }

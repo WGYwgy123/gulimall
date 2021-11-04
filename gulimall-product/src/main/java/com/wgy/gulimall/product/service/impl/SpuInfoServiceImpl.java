@@ -70,12 +70,13 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void saveSpuInfo(SpuSaveVo vo) {
-
         // 1. 保存spu基本信息 pms_spu_info
         final SpuInfoEntity spuInfoEntity = new SpuInfoEntity();
         BeanUtils.copyProperties(vo, spuInfoEntity);
+        // 这完全可以用MP的自动注入来注入时间
         spuInfoEntity.setCreateTime(new Date());
         spuInfoEntity.setUpdateTime(new Date());
+        // 保存基本数据
         saveBaseSpuInfo(spuInfoEntity);
         // 2. 保存spu描述图片 pms_spu_info_desc
         final List<String> spuImageDescList = vo.getDecript();
@@ -83,6 +84,7 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
             final SpuInfoDescEntity spuInfoDescEntity = new SpuInfoDescEntity();
             spuInfoDescEntity.setSpuId(spuInfoEntity.getId());
             spuInfoDescEntity.setDecript(String.join(",", spuImageDescList));
+            // 保存spu描述图片
             spuInfoDescService.save(spuInfoDescEntity);
         }
         // 3. 保存spu图片集 pms_spu_images

@@ -23,7 +23,7 @@ public interface CouponFeignService {
      * 3. 对方服务收到请求。请求体里有json数据
      *       @PostMapping("/save")
      *       public R save(@RequestBody SpuBoundsEntity spuBounds) 将请求体的类型转成 SpuBoundsEntity
-     * 只要json数据模型是兼容的，双方服务无需使用同一个to
+     * 只要json数据模型是兼容的，双方服务无需使用同一个to，命名也不用相同，是根据路径来发送请求的
      * @param spuBoundTo 应用层传递数据模型
      * @return
      */
